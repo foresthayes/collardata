@@ -4,10 +4,14 @@
 \alias{combine}
 \title{Combine CSV files}
 \usage{
-combine(data_folder = "data")
+combine(data_folder = "data", file_type = c("csv", "txt"), sep = ",")
 }
 \arguments{
 \item{data_folder}{Folder that CSV files are contained within}
+
+\item{file_type}{Extensions of files to combine.  Default is .txt and .csv}
+
+\item{sep}{Delimiter of data.  Defailt is "," i.e. for .csv files}
 }
 \value{
 Returns a data table of unique rows (removes duplicates)

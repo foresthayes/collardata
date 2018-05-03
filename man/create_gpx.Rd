@@ -4,10 +4,12 @@
 \alias{create_gpx}
 \title{Create GPX file from dataframe of GPS collar data}
 \usage{
-create_gpx(data = "latest_position")
+create_gpx(data = "latest_position", savelocation = "data/GPX")
 }
 \arguments{
-\item{data}{Dataframe containing GPS collar data}
+\item{data}{Dataframe containing GPS point data}
+
+\item{savelocation}{Location to save output GPX file within parent directory}
 }
 \value{
 Create GPX file with latest points
