@@ -4,7 +4,7 @@
 \alias{latest}
 \title{Return latest position for each animal ID from matric of GPS collar data}
 \usage{
-latest(data = all_collars, range = 180)
+latest(data = data, range = 180)
 }
 \arguments{
 \item{data}{Data frame with ID and GPS collar data}

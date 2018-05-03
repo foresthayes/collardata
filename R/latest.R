@@ -8,8 +8,7 @@
 #'
 #' @examples latest_position <- latest(all_collars, range = 180)
 
-latest <- function(data = all_collars, range = 180){
-  require(dplyr)
+latest <- function(data = data, range = 180){
 
   latest <- data %>%
     # filter(date_time > now() - months(monthrange)) %>%

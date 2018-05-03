@@ -2,7 +2,9 @@
 
 export(combine)
 export(convert_ATS)
+export(convert_format)
 export(convert_vec)
 export(create_gpx)
 export(latest)
+export(read_files)
 export(update_database)
