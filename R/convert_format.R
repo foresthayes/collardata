@@ -13,7 +13,7 @@ convert_format <- function(data){
   out <- list()
 
   # common format names
-  names <- c("obs", "ID", "date_time", "UTM_zone", "easting", "northing", "lat", "lon", "elev", "DOP", "numsats", "fixtime", "mort_status", "main_v", "beacon_v", "temperature")
+  names <- c("obs", "ID", "date_time", "UTM_zone", "easting", "northing", "lat", "lon", "elev", "DOP", "numsats", "fixtime", "activity", "mort_status", "main_v", "beacon_v", "temperature")
 
 
   # Convert ATS collar data
