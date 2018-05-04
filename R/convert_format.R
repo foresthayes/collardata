@@ -109,7 +109,7 @@ convert_format <- function(data){
   }
 
   # Combine separate dataframes
-  combined <- rbind(out[[i]])
+  for (i in 1:length(out)) {combined <- rbind(out[[i]])}
 
   # Return all data combined into common format
   return(combined)
