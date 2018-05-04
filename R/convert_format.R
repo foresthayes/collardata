@@ -64,7 +64,7 @@ convert_format <- function(data){
       # Convert date and time
       year <- paste(20, data[[i]]$Year, sep = "")
       date <- paste(year, 01, 01, sep = "/")
-      time <- paste(data[[i]]$Hour, data$Minute, "00", sep = ":")
+      time <- paste(data[[i]]$Hour, data[[i]]$Minute, "00", sep = ":")
       date_time <- as.POSIXct(paste(date, time, sep = " "), tz = "MST")
       new$date_time <- date_time
 
