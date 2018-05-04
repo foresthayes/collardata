@@ -106,10 +106,10 @@ convert_format <- function(data){
 
     } # closing vectronics
 
-    # Combine separate dataframes
-    combined<- rbind(out[[i]])
-
   }
+
+  # Combine separate dataframes
+  combined <- rbind(out[[i]])
 
   # Return all data combined into common format
   return(combined)
