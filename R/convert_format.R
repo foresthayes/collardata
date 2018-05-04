@@ -44,6 +44,36 @@ convert_format <- function(data){
 
     } # closing ats
 
+    # Convert ATS iridium collar data
+    if(identical(names(data[[i]]), c("CollarSerialNumber","Year","Julianday","Hour", "Minute", "Activity", "Temperature", "Latitude","Longitude","HDOP","NumSats","FixTime","2D/3D"))){
+
+      # Generate new dataframe
+      new <- data.frame(matrix(NA, nrow = nrow(data[[i]]), ncol = length(names)))
+      colnames(new) <- names
+
+      # Transfer to common format
+      new$ID <- as.factor(data[[i]]$CollarSerialNumber)
+      new$activity <- data[[i]]$Activity
+      new$temperature <- data[[i]]$Temperature
+      new$lat <- data[[i]]$Latitude
+      new$lon <- data[[i]]$Longitude
+      new$DOP <- data[[i]]$HDOP
+      new$numsats <- data[[i]]$NumSats
+      new$fixtime <- data[[i]]$FixTime
+
+      # Convert date and time
+      year <- paste(20, data[[i]]$Year, sep = "")
+      date <- paste(year, 01, 01, sep = "/")
+      time <- paste(data[[i]]$Hour, data$Minute, "00", sep = ":")
+      date_time <- as.POSIXct(paste(date, time, sep = " "), tz = "MST")
+      new$date_time <- date_time
+
+      out[[i]] <- new
+
+    } # closing ats iridium
+
+
+
     # Convert Vectronics collar data
     if(identical(names(data[[i]]), c("No","CollarID","UTC_Date","UTC_Time","LMT_Date","LMT_Time","Origin","SCTS_Date","SCTS_Time","ECEF_X..m.","ECEF_Y..m.","ECEF_Z..m.","Latitude....","Longitude....", "Height..m.","DOP","FixType","X3D_Error..m.","Sats","Sat","C.N","Sat.1","C.N.1","Sat.2","C.N.2","Sat.3","C.N.3","Sat.4","C.N.4","Sat.5","C.N.5","Sat.6","C.N.6","Sat.7","C.N.7","Sat.8","C.N.8","Sat.9","C.N.9","Sat.10","C.N.10","Sat.11", "C.N.11","Mort..Status","Activity","Main..V.","Beacon..V.","Temp...C.","No.1","No.2"))){
 
