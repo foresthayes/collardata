@@ -106,7 +106,7 @@ convert_format <- function(data){
   }
 
   # Combine separate dataframes
-  combined <- rbind(out[[i]])
+  combined <- do.call("rbind", out)
 
   # Return all data combined into common format
   return(combined)
