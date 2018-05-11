@@ -108,7 +108,9 @@ convert_format <- function(data){
   # Combine separate dataframes
   combined <- do.call("rbind", out)
 
+  unique_points <- dplyr::distinct(combined)
+
   # Return all data combined into common format
-  return(combined)
+  return(unique_points)
 
 }
