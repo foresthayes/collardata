@@ -106,6 +106,6 @@ convert_format <- function(data){
   combined <- do.call("rbind", out)
 
   # Return all data combined into common format
-  return(unique_points)
+  return(combined)
 
 }
