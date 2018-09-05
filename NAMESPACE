@@ -3,4 +3,6 @@
 export(convert_format)
 export(create_gpx)
 export(latest)
+export(read_database)
 export(read_files)
+export(update_database)
