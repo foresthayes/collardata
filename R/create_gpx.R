@@ -14,7 +14,7 @@ create_gpx <- function(data = "latest_position", savelocation = "data/GPX"){
   latslongs <- SpatialPointsDataFrame(data.frame(data$lon, data$lat), data = data, proj4string = CRS ("+proj=longlat + ellps=WGS84"))
 
   # Add point names
-  latslongs@data$name <- paste(data$ID, format(data$date_time, "%m-%d"), paste("h",format(data$date_time,"%H"), sep = ""), sep = " ")
+  latslongs@data$name <- paste(data$ID, format(data$date_time, "%Y-%m-%d"), paste("h",format(data$date_time,"%H"), sep = ""), sep = " ")
 
   # Write GPX file
   writeOGR(latslongs["name"], dsn=here::here(savelocation, paste("Points"," ", Sys.Date(), " h", format(Sys.time(), "%H"), ".gpx", sep = "")),
