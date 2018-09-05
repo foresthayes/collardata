@@ -13,7 +13,7 @@ convert_format <- function(data){
   out <- list()
 
   # common format names
-  names <- c("obs", "ID", "date_time", "UTM_zone", "easting", "northing", "lat", "lon", "elev", "DOP", "numsats", "fixtime", "activity", "mort_status", "main_v", "beacon_v", "temperature")
+  names <- c("obs", "ID", "date_time", "lat", "lon", "elev", "DOP", "numsats", "fixtime", "activity", "mort_status", "main_v", "beacon_v", "temperature")
 
   # Convert ATS collar data
   for(i in 1:length(data)){
@@ -34,8 +34,8 @@ convert_format <- function(data){
 
       # Convert date and time
       year <- paste(20, data[[i]]$Year, sep = "")
-      date <- paste(year, 01, 01, sep = "/")
-      time <- paste(data[[i]]$Hour, "00", "00", sep = ":")
+      date <- as.Date(paste(data[[i]]$Year, data[[i]]$Julianday), "%y %j")
+      time <- paste(data[[i]]$Hour, data[[i]]$Minute, "00", sep = ":")
       date_time <- as.POSIXct(paste(date, time, sep = " "), tz = "MST")
       new$date_time <- date_time
 
@@ -62,8 +62,8 @@ convert_format <- function(data){
 
       # Convert date and time
       year <- paste(20, data[[i]]$Year, sep = "")
-      date <- paste(year, 01, 01, sep = "/")
-      time <- paste(data[[i]]$Hour, data$Minute, "00", sep = ":")
+      date <- as.Date(paste(data[[i]]$Year, data[[i]]$Julianday), "%y %j")
+      time <- paste(data[[i]]$Hour, data[[i]]$Minute, "00", sep = ":")
       date_time <- as.POSIXct(paste(date, time, sep = " "), tz = "MST")
       new$date_time <- date_time
 
@@ -95,9 +95,6 @@ convert_format <- function(data){
       new$main_v <- data[[i]]$Main..V.
       new$beacon_v <- data[[i]]$Beacon..V.
       new$temperature <- data[[i]]$Temp...C.
-      # new$UTM_zone <- substr(data$Easting, 0, 2)
-      # new$easting <- substring(data$Easting, 2)
-      # new$northing <- data$Northing
 
       out[[i]] <- new
 
@@ -107,8 +104,6 @@ convert_format <- function(data){
 
   # Combine separate dataframes
   combined <- do.call("rbind", out)
-
-  unique_points <- dplyr::distinct(combined)
 
   # Return all data combined into common format
   return(unique_points)
