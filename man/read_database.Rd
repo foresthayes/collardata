@@ -4,7 +4,7 @@
 \alias{read_database}
 \title{Read latest local database}
 \usage{
-read_database(data_folder = NA, colClasses = NULL)
+read_database(data_folder = NA, colClasses = NA)
 }
 \arguments{
 \item{data_folder}{Folder containing database to be read in.}
