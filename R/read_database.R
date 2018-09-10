@@ -7,7 +7,7 @@
 #'
 #' @examples read_database("data/ats")
 
-read_database <- function(data_folder = NA){
+read_database <- function(data_folder = NA, colClasses = NULL){
 
   # Identify the most recent database file
   database_file <- tail(list.files(here::here(data_folder), pattern = "csv", full.names = T))
