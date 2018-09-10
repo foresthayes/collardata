@@ -13,7 +13,7 @@ read_database <- function(data_folder = NA){
   database_file <- tail(list.files(here::here(data_folder), pattern = "csv", full.names = T))
 
   # Read in the latest database file
-  database <- read.delim(database_file, sep = ",")
+  database <- read.delim(database_file, sep = ",", colClasses = colClasses)
 
   # Return the database
   return(database)
